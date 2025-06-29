@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banco de Provas</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="pagina-questao">
+    <h1>Banco de Provas</h1>
+
+    <button id="novaProvaBtn" class="botao" style="margin-bottom: 1.5rem;">Nova Prova</button>
+    <button onclick="window.location.href='index.html'" class="botao" style="margin-bottom: 1.5rem; margin-left: 1rem;">Voltar ao Início</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Disciplina</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaProvas"></tbody>
+    </table>
+
+    <div id="mensagem-erro" class="mensagem-erro" hidden></div>
+  </main>
+
+  <script src="js/provas.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Banco de Questões</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="pagina-questoes">
+    <h1>Banco de Questões</h1>
+    <button id="voltarBtn" class="botao botao-secundario">Voltar à tela inicial</button>
+    <button id="novaQuestaoBtn" class="botao">Nova Questão</button>
+
+    <div id="mensagem-erro" class="mensagem-erro" hidden></div>
+
+    <table id="tabelaQuestoes">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Disciplina</th>
+          <th>Assuntos</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas geradas dinamicamente -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="js/questoes.js"></script>
+  <script>
+    document.getElementById("voltarBtn").onclick = () => window.location.href = "index.html";
+  </script>
+</body>
+</html>
