@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Prova</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Estilos específicos para as listas */
+    .listas-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .lista {
+      flex: 1 1 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      padding: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .lista h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: #2c3e50;
+    }
+
+    .questao-item {
+      border-bottom: 1px solid #ddd;
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .questao-info {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .questao-titulo {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .questao-assuntos {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .btn-pequeno {
+      padding: 0.3rem 0.7rem;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-visualizar {
+      background-color: #17a2b8;
+      color: white;
+    }
+
+    .btn-visualizar:hover {
+      background-color: #117a8b;
+    }
+
+    .btn-adicionar {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-adicionar:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-remover {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-remover:hover {
+      background-color: #b02a37;
+    }
+
+    /* Popup descrição */
+    #popupDescricao {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #popupDescricao .conteudo {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    #popupDescricao button.fechar {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #popupDescricao button.fechar:hover {
+      background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="pagina-questao">
+    <h1 id="tituloPagina">Nova Prova</h1>
+
+    <form id="formProva">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required />
+
+      <label for="disciplina">Disciplina:</label>
+      <input type="text" id="disciplina" name="disciplina" required />
+
+      <div class="listas-container">
+        <!-- Banco de questões filtradas -->
+        <section class="lista" id="listaBanco">
+          <h2>Banco de Questões</h2>
+
+          <div id="questoesFiltradas">
+            <!-- Questões filtradas aparecem aqui -->
+            <p>Carregando questões...</p>
+          </div>
+        </section>
+
+        <!-- Questões selecionadas -->
+        <section class="lista" id="listaSelecionadas">
+          <h2>Questões Selecionadas para a Prova</h2>
+          <div id="questoesSelecionadas">
+            <p>Nenhuma questão selecionada.</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="botoes" style="margin-top: 2rem;">
+        <button type="submit" id="btnSalvar" class="botao">Inserir Prova</button>
+        <button type="button" id="btnExcluir" class="botao botao-danger" hidden>Remover Prova</button>
+      </div>
+    </form>
+
+    <div id="mensagemErro" class="mensagem-erro" hidden></div>
+  </main>
+
+  <!-- Popup para descrição da questão -->
+  <div id="popupDescricao">
+    <div class="conteudo">
+      <h3 id="popupTitulo"></h3>
+      <p id="popupDisciplina"></p>
+      <p><strong>Assuntos:</strong> <span id="popupAssuntos"></span></p>
+      <div id="popupAlternativas"></div>
+      <button class="fechar" id="btnFecharPopup">Fechar</button>
+    </div>
+  </div>
+
+  <script src="js/prova.js"></script>
+  <script>
+    // Garante que as questões do banco sejam carregadas automaticamente ao abrir a página
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof buscarQuestoes === 'function') buscarQuestoes();
+    });
+  </script>
+</body>
+</html>

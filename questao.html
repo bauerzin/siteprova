@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Questão</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="pagina-questao">
+    <h1 id="tituloPagina">Nova Questão</h1>
+
+    <form id="formQuestao">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required />
+
+      <label for="disciplina">Disciplina:</label>
+      <input type="text" id="disciplina" name="disciplina" required />
+
+      <label for="assuntos">Assuntos (separados por vírgulas):</label>
+      <input type="text" id="assuntos" name="assuntos" required />
+
+      <fieldset>
+        <legend>Alternativas</legend>
+        <div id="alternativas">
+          <!-- Alternativas serão geradas por JS -->
+        </div>
+      </fieldset>
+
+      <div class="botoes">
+        <button type="submit" id="btnSalvar" class="botao">Inserir</button>
+        <button type="button" id="btnExcluir" class="botao botao-danger" hidden>Remover</button>
+      </div>
+    </form>
+
+    <div id="mensagemErro" class="mensagem-erro" hidden></div>
+  </main>
+
+  <script src="js/questao.js"></script>
+</body>
+</html>
